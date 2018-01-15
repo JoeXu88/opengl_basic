@@ -1,0 +1,3 @@
+/Users/david/work/android/opengl_es_test/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/david/work/android/opengl_es_test/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/Users/david/work/android/opengl_es_test/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir
