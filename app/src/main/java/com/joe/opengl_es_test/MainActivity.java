@@ -1,10 +1,12 @@
 package com.joe.opengl_es_test;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.joe.opengl_es_test.gles.GLView;
+import com.joe.opengl_es_test.gles.utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,10 +25,13 @@ public class MainActivity extends AppCompatActivity {
         /**two ways to show gl render content**/
         //--1: setContentView directly
         //mGLView = new GLView(this);
+        //mGLView.init(0);
         //setContentView(mGLView);
 
         //--2: put and get glview in actitity xml file
         mGLView = (GLView) findViewById(R.id.glview);
+        mGLView.init(utils.RenderType.BITMAP); //0--triangle, 1--texture
+        mGLView.setImage(BitmapFactory.decodeFile("sdcard/tf/persons/img_Angela_0.jpg"));
         mGLView.update();
         /*******************/
 
