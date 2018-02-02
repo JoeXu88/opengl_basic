@@ -12,16 +12,16 @@ public class utils {
         /** basic render for vertex specified **/
         static final String simpleVetexShaderProg =
                 "attribute vec4 vPosition;"
-                        + "void main() {"
-                        + "  gl_Position = vPosition;" //mainly to get vertext position
-                        + "}";
+                + "void main() {"
+                + "  gl_Position = vPosition;" //mainly to get vertext position
+                + "}";
 
         static final String simpleFragShaderProg =
                 "precision mediump float;"
-                        +"uniform vec4 vColor;"
-                        + "void main() {"
-                        + "  gl_FragColor = vColor;" //mainly to get frament drawing color
-                        + "}";
+                +"uniform vec4 vColor;"
+                + "void main() {"
+                + "  gl_FragColor = vColor;" //mainly to get frament drawing color
+                + "}";
     /*-----------------------------------------*/
 
         /** texture render for bitmap rgb data **/
@@ -35,9 +35,11 @@ public class utils {
 
         static final String texFragShaderProg = "precision mediump float;"
                 +"uniform sampler2D vTexture;"
+                +"uniform sampler2D vAlphaTexture;"
                 +"varying vec2 aCoordinate;"
                 + "void main() {"
-                + "  gl_FragColor = texture2D(vTexture,aCoordinate);" //mainly to get frament drawing color
+                + "  vec4 color = texture2D(vTexture,aCoordinate);"
+                + "  gl_FragColor = color;" //mainly to get frament drawing color
                 + "}";
     /*-----------------------------------------*/
     }

@@ -37,6 +37,17 @@ public class GLView extends GLSurfaceView{
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }
 
+    public void init() {
+        setEGLContextClientVersion(2);
+        setPreserveEGLContextOnPause(true);
+    }
+
+    public void setRender(GLRender render) {
+        mGLRender = render;
+        setRenderer(mGLRender);
+        setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+    }
+
     public void setImage(Bitmap bitmap) {
         if(mGLRender != null) {
             mGLRender.setImage(bitmap);

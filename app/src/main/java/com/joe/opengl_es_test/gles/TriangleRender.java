@@ -5,11 +5,11 @@ import android.opengl.GLES20;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Created by joe on 31/01/2018.
+ * Basic vetex rendering example
  */
 
 public class TriangleRender extends GLRender {
@@ -35,9 +35,7 @@ public class TriangleRender extends GLRender {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        super.onSurfaceCreated(gl, config);
-
+    public void onGetHandles() {
         mPostionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
         checkError("get position location");
         mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
