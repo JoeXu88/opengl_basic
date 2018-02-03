@@ -25,6 +25,7 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
     protected Bitmap mbitmap;
     protected int mwidth;
     protected int mheight;
+    private boolean mClear = true;
 
     protected int mProgram = 0;
     private int mTextureID = 0;
@@ -71,8 +72,10 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
     }
 
     protected void onClearScreen() {
-        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT|GLES20.GL_DEPTH_BUFFER_BIT);
+        if(mClear) {
+            GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+            GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+        }
     }
 
     protected void onSetTextureSrc() {
@@ -173,6 +176,10 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
 
     public int getHeight() {
         return mheight;
+    }
+
+    public void setClearScreen(boolean clear) {
+        mClear = clear;
     }
 
 }

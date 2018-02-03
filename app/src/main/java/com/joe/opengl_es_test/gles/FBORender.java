@@ -98,7 +98,11 @@ public class FBORender extends GLRender{
     }
 
     private void genFrameTexture() {
-        /* clear first */
+        /* if already generated, return directly */
+        if(mfTexture[0] != -1 && mfFrame[0] != -1)
+            return;
+
+        /* check if need to delete first */
         deleteFrameBuffer();
         GLES20.glGenFramebuffers(1, mfFrame, 0);
         GLES20.glGenTextures(1, mfTexture, 0);
@@ -128,10 +132,12 @@ public class FBORender extends GLRender{
     private void deleteFrameBuffer() {
         if(mfFrame[0] != -1) {
             GLES20.glDeleteFramebuffers(1, mfFrame, 0);
+            mfFrame[0] = -1;
         }
 
         if(mfTexture[0] != -1) {
             GLES20.glDeleteTextures(1, mfTexture, 0);
+            mfTexture[0] = -1;
         }
     }
 
@@ -154,5 +160,13 @@ public class FBORender extends GLRender{
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void setClearScreen(boolean clear) {
+        if(mSrcRnd != null)
+            mSrcRnd.setClearScreen(clear);
+        else
+            super.setClearScreen(clear);
     }
 }

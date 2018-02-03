@@ -32,15 +32,16 @@ public class TextureRender extends GLRender {
 
     @Override
     public void onSetTextureSrc() {
-        if(mTexID == -1)
-            setTextureID(genTexture(mbitmap));
-        else
-            setTextureID(mTexID);
+        if(mTexID == -1) {
+            mTexID = genTexture(mbitmap);
+        }
+
+        setTextureID(mTexID);
     }
 
     private int genTexture(Bitmap bitmap) {
-        int texture[] = new int[1];
         if(bitmap != null && !bitmap.isRecycled()) {
+            int texture[] = new int[1];
             GLES20.glGenTextures(1, texture, 0);
             GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture[0]);
             GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,GLES20.GL_NEAREST);
