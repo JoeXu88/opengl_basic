@@ -20,32 +20,45 @@ import javax.microedition.khronos.opengles.GL10;
 public abstract class GLRender implements GLSurfaceView.Renderer {
     private final String TAG = "GLRender";
 
+    //basic information
     private String vertexshadercode;
     private String fragmentshadercode;
     protected Bitmap mbitmap;
-    protected int mwidth;
-    protected int mheight;
+    protected int   mwidth;
+    protected int   mheight;
     private boolean mClear = true;
 
-    protected int mProgram = 0;
-    private int mTextureID = 0;
-    protected int mPostionHandle;
-    protected int mTexcordHandle;
-    protected int mTexHandle;
+    //for pipeline creating
+    protected int   mProgram = 0;
+    protected int   mPostionHandle;
+    protected int   mTexcordHandle;
+    protected int   mTexHandle;
+    protected int   mMatrixHandle;
+    private int     mTextureID = 0;
 
+    //for display matrix
+    private float[] mMatrix;
+    private int     mRotateAngle = 0;
+    private boolean mFlipx = false;
+    private boolean mFlipy = false;
+
+
+    //for vertex and corrd
     private ByteBuffer mVertex = null;
     private ByteBuffer mTexCoord = null;
-    private static float[] vertices =  {-1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f,}; // fullscreen
-    private static float[] texcoord = {0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,};// whole-texture
+    private float[] vertices =  {-1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f,}; // fullscreen
+    private float[] texcoord = {0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,};// whole-texture
 
     public GLRender(String vetexshader, String fragshader) {
         this.vertexshadercode = vetexshader;
         this.fragmentshadercode = fragshader;
+        mMatrix = MatrixUtils.getOriginMatrix();
     }
 
     public GLRender() {
         this.vertexshadercode = utils.ShaderProgram.texVetexShaderProg;
         this.fragmentshadercode = utils.ShaderProgram.texFragShaderProg;
+        mMatrix = MatrixUtils.getOriginMatrix();
     }
 
     @Override
@@ -67,7 +80,8 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl) {
         onClearScreen();
         onSetTextureSrc();
-        onBindTextureID(mTextureID);
+        onSetMatrix();
+        onBindTextureID();
         onDraw();
     }
 
@@ -82,14 +96,28 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
 
     }
 
-    protected void onBindTextureID(int texture) {
+    protected void onSetMatrix(){
+
+        MatrixUtils.getDisplayMatrix(mMatrix, MatrixUtils.TYPE_FITXY);
+        if(mRotateAngle != 0)
+            MatrixUtils.rotate(mMatrix, mRotateAngle);
+
+        MatrixUtils.flip(mMatrix, mFlipx, mFlipy);
+
+        GLES20.glUseProgram(mProgram);
+        GLES20.glUniformMatrix4fv(mMatrixHandle, 1, false, mMatrix, 0);
+    }
+
+    /**
+    ** only bind one texture here, if want to bind multi texture need to override this function
+    **/
+    protected void onBindTextureID() {
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextureID);
         GLES20.glUniform1i(mTexHandle, 0);
     }
 
     protected void onDraw() {
-        GLES20.glUseProgram(mProgram);
         GLES20.glEnableVertexAttribArray(mPostionHandle);
         GLES20.glVertexAttribPointer(mPostionHandle, 2, GLES20.GL_FLOAT, false, 8, mVertex);
         GLES20.glEnableVertexAttribArray(mTexcordHandle);
@@ -107,6 +135,8 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
         checkError("get texture location");
         mTexcordHandle = GLES20.glGetAttribLocation(mProgram, "vCoordinate");
         checkError("get texcord location");
+        mMatrixHandle = GLES20.glGetUniformLocation(mProgram,"vMatrix");
+        checkError("get matrix location");
     }
 
     protected int createbuff() {
@@ -180,6 +210,23 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
 
     public void setClearScreen(boolean clear) {
         mClear = clear;
+    }
+
+    public void setMatrix(float[] matrix) {
+        mMatrix = matrix;
+    }
+
+    public float[] getMatrix() {
+        return mMatrix;
+    }
+
+    public void setRotate(int angle) {
+        mRotateAngle = angle;
+    }
+
+    public void setFlip(boolean x, boolean y) {
+        mFlipx = x;
+        mFlipy = y;
     }
 
 }

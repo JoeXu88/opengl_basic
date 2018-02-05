@@ -10,8 +10,8 @@ public class utils {
         public ShaderProgram(){}
 
         /** basic render for vertex specified **/
-        static final String simpleVetexShaderProg =
-                "attribute vec4 vPosition;"
+        static final String simpleVetexShaderProg = "attribute vec4 vPosition;"
+                + "uniform mat4 vMatrix;"
                 + "void main() {"
                 + "  gl_Position = vPosition;" //mainly to get vertext position
                 + "}";
@@ -26,10 +26,11 @@ public class utils {
 
         /** texture render for bitmap rgb data **/
         static final String texVetexShaderProg = "attribute vec4 vPosition;"
+                +"uniform mat4 vMatrix;"
                 +"attribute vec2 vCoordinate;"
                 +"varying vec2 aCoordinate;"
                 + "void main() {"
-                + "  gl_Position = vPosition;" //mainly to get vertext position
+                + "  gl_Position = vMatrix * vPosition;" //mainly to get vertext position
                 + "  aCoordinate = vCoordinate;"
                 + "}";
 
