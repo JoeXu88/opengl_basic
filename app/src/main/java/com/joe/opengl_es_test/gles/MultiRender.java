@@ -44,6 +44,7 @@ public class MultiRender extends GLRender{
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        mbackground.setRotate(180);
         mbackground.onDrawFrame(gl);
         mfbo.setClearScreen(false);
         mfbo.onDrawFrame(gl);

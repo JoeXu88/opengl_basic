@@ -38,6 +38,7 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
 
     //for display matrix
     private float[] mMatrix;
+    private int     mViewType = MatrixUtils.TYPE_FITXY;
     private int     mRotateAngle = 0;
     private boolean mFlipx = false;
     private boolean mFlipy = false;
@@ -79,10 +80,12 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl) {
         onClearScreen();
+        onBegin();
         onSetTextureSrc();
         onSetMatrix();
         onBindTextureID();
         onDraw();
+        onEnd();
     }
 
     protected void onClearScreen() {
@@ -96,15 +99,27 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
 
     }
 
-    protected void onSetMatrix(){
+    private void onBegin() {
+        GLES20.glUseProgram(mProgram);
+        GLES20.glEnableVertexAttribArray(mPostionHandle);
+        GLES20.glEnableVertexAttribArray(mTexcordHandle);
+    }
 
-        MatrixUtils.getDisplayMatrix(mMatrix, MatrixUtils.TYPE_FITXY);
+    private void onEnd() {
+        GLES20.glFinish();
+        GLES20.glDisableVertexAttribArray(mPostionHandle);
+        GLES20.glDisableVertexAttribArray(mTexcordHandle);
+        GLES20.glUseProgram(0);
+    }
+
+    protected void onSetMatrix(){
+        if(mbitmap != null)
+            MatrixUtils.getDisplayMatrix(mMatrix, MatrixUtils.TYPE_CENTERINSIDE, mbitmap.getWidth(), mbitmap.getHeight(),mwidth,mheight);
+        else
+            MatrixUtils.getDisplayMatrix(mMatrix, MatrixUtils.TYPE_FITXY);
+        MatrixUtils.flip(mMatrix, mFlipx, mFlipy);
         if(mRotateAngle != 0)
             MatrixUtils.rotate(mMatrix, mRotateAngle);
-
-        MatrixUtils.flip(mMatrix, mFlipx, mFlipy);
-
-        GLES20.glUseProgram(mProgram);
         GLES20.glUniformMatrix4fv(mMatrixHandle, 1, false, mMatrix, 0);
     }
 
@@ -118,14 +133,9 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
     }
 
     protected void onDraw() {
-        GLES20.glEnableVertexAttribArray(mPostionHandle);
         GLES20.glVertexAttribPointer(mPostionHandle, 2, GLES20.GL_FLOAT, false, 8, mVertex);
-        GLES20.glEnableVertexAttribArray(mTexcordHandle);
         GLES20.glVertexAttribPointer(mTexcordHandle, 2, GLES20.GL_FLOAT, false, 8, mTexCoord);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,4);
-        //GLES20.glFinish();
-        GLES20.glDisableVertexAttribArray(mPostionHandle);
-        GLES20.glDisableVertexAttribArray(mTexcordHandle);
     }
 
     protected void onGetHandles() {
@@ -227,6 +237,10 @@ public abstract class GLRender implements GLSurfaceView.Renderer {
     public void setFlip(boolean x, boolean y) {
         mFlipx = x;
         mFlipy = y;
+    }
+
+    public void setViewType(int viewType) {
+        mViewType = viewType;
     }
 
 }
