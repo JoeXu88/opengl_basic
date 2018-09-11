@@ -17,7 +17,29 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
+             src/main/cpp/opencl/FrmKernel.cpp
+             src/main/cpp/opencl/FrmFile_Platform.cpp
+             src/main/cpp/opencl/FrmStdlib_Platform.cpp
+             src/main/cpp/opencl/FrmUtils_Platform.cpp
+             src/main/cpp/opencl/FrmUtils.cpp
+             src/main/cpp/glrender.cpp
              src/main/cpp/native-lib.cpp )
+
+include_directories(src/main/cpp/opencl)
+include_directories(src/main/cpp/)
+include_directories(/opt/android-sdk/ndk-bundle/sources/android/native_app_glue/)
+
+add_library( opencl-lib
+             SHARED
+             IMPORTED )
+set_target_properties( # Specifies the target library.
+                       opencl-lib
+
+                       # Specifies the parameter you want to define.
+                       PROPERTIES IMPORTED_LOCATION
+
+                       # Provides the path to the library you want to import.
+                       /Users/david/work/android/opengl_basic/app/src/main/cpp/libs/${ANDROID_ABI}/libOpenCL.so )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -32,13 +54,24 @@ find_library( # Sets the name of the path variable.
               # you want CMake to locate.
               log )
 
+find_library(opengl-lib
+             GLESv2)
+find_library(egl-lib
+             EGL)
+find_library(android-lib
+             android)
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
+                       opencl-lib
 
+                       ${opengl-lib}
+                       ${egl-lib}
+                       ${android-lib}
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )

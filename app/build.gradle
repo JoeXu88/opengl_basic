@@ -13,6 +13,8 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
+                cFlags "-Wno-psabi -Wno-conversion-null -Wno-write-strings"
+                abiFilters "arm64-v8a"
             }
         }
     }

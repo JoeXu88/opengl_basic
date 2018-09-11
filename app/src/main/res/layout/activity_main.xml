@@ -18,8 +18,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.006" />
-    <com.joe.opengl_es_test.gles.GLView
-        android:id="@+id/glview"
+    <!--<com.joe.opengl_es_test.gles.GLView-->
+        <!--android:id="@+id/glview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+    <com.joe.opengl_es_test.gles.GLNativeView
+        android:id="@+id/glnativeview"
+        android:background="#00000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

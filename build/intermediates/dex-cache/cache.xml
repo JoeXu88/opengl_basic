@@ -3,57 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="/Users/david/.android/build-cache/a5442c0fb05d70d4c52a7df0fdd07c5ef1bf1a77/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_27caea8e7be1169198bd8f5453447b9d90a8bef4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/david/.android/build-cache/492ee6390707db4b13e8e9341892e6cd168fa908/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_4ffea7f65cb0b84d4e6eb47ec7b6e526c33872ea.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/opt/android-sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_acc73e4ee5a95a149a64c98ae3a02c1a889b532c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/opt/android-sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_acc73e4ee5a95a149a64c98ae3a02c1a889b532c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/david/.android/build-cache/a5442c0fb05d70d4c52a7df0fdd07c5ef1bf1a77/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_27caea8e7be1169198bd8f5453447b9d90a8bef4.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/david/.android/build-cache/115d4968ef8ffedd1ee28cf2f4bbace964bf4318/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
         sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_4f26fdcebd5d9525e0defa8a31fc2a3f57749d76.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_4f26fdcebd5d9525e0defa8a31fc2a3f57749d76.jar" />
     </item>
     <item
         is-multidex="false"
@@ -62,7 +17,16 @@
         optimize="true"
         revision="25.0.1"
         sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_09b36497bb202578281d32e2ae1b35be34248c00.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_09b36497bb202578281d32e2ae1b35be34248c00.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/david/.android/build-cache/a5442c0fb05d70d4c52a7df0fdd07c5ef1bf1a77/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_27caea8e7be1169198bd8f5453447b9d90a8bef4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -71,7 +35,16 @@
         optimize="true"
         revision="25.0.1"
         sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_7baa2cbf9b46b08672b7c603d3d89570792d0e73.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_7baa2cbf9b46b08672b7c603d3d89570792d0e73.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/david/.android/build-cache/492ee6390707db4b13e8e9341892e6cd168fa908/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_4ffea7f65cb0b84d4e6eb47ec7b6e526c33872ea.jar" />
     </item>
     <item
         is-multidex="false"
@@ -80,7 +53,7 @@
         optimize="true"
         revision="25.0.1"
         sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_b94f60ad32e1ee2749ff9644653285ceaa4b2349.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_b94f60ad32e1ee2749ff9644653285ceaa4b2349.jar" />
     </item>
     <item
         is-multidex="false"
@@ -89,7 +62,7 @@
         optimize="true"
         revision="25.0.1"
         sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_6dd0fe7587b5d0e1e72052abaabdcc80c20e6556.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_6dd0fe7587b5d0e1e72052abaabdcc80c20e6556.jar" />
     </item>
     <item
         is-multidex="false"
@@ -98,7 +71,7 @@
         optimize="true"
         revision="25.0.1"
         sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_f9b81bed0e59d64a0fc312af385bb29aab9b0208.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_f9b81bed0e59d64a0fc312af385bb29aab9b0208.jar" />
     </item>
     <item
         is-multidex="false"
@@ -107,7 +80,16 @@
         optimize="true"
         revision="25.0.1"
         sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_1fadc471903c80a4d171ab39179d210e4d54d262.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_1fadc471903c80a4d171ab39179d210e4d54d262.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/opt/android-sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_acc73e4ee5a95a149a64c98ae3a02c1a889b532c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -116,7 +98,7 @@
         optimize="true"
         revision="25.0.1"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_e1c6aeb568413fc3de132760af4472c5cd6a7e2d.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_e1c6aeb568413fc3de132760af4472c5cd6a7e2d.jar" />
     </item>
     <item
         is-multidex="false"
@@ -125,7 +107,7 @@
         optimize="true"
         revision="25.0.1"
         sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="/Users/david/work/android/opengl_es_test/app/build/intermediates/pre-dexed/debug/classes_7e3ca9f147b6f4a8f4cbb05a0f54f475c7cc1e6b.jar" />
+        <dex dex="/Users/david/work/android/opengl_basic/app/build/intermediates/pre-dexed/debug/classes_7e3ca9f147b6f4a8f4cbb05a0f54f475c7cc1e6b.jar" />
     </item>
 
 </items>

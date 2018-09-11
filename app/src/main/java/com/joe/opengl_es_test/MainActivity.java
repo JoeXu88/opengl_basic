@@ -1,20 +1,24 @@
 package com.joe.opengl_es_test;
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.joe.opengl_es_test.gles.GLNativeView;
 import com.joe.opengl_es_test.gles.GLView;
-import com.joe.opengl_es_test.gles.MultiRender;
 
 public class MainActivity extends AppCompatActivity {
 
     private GLView mGLView = null;
+    private GLNativeView mGLNativeView = null;
+    private AssetManager mAssetManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAssetManager = getResources().getAssets();
 
 
         // Example of a call to a native method
@@ -28,12 +32,19 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(mGLView);
 
         //--2: put and get glview in actitity xml file
+        /*
         mGLView = (GLView) findViewById(R.id.glview);
         //mGLView.init(utils.RenderType.BITMAP); //0--triangle, 1--texture
         //mGLView.setImage(BitmapFactory.decodeFile("sdcard/tf/persons/img_Angela_0.jpg"));
         mGLView.init();
         mGLView.setRenderer(new MultiRender());
         mGLView.update();
+        if(NATIVE)
+            mGLView.setVisibility(View.INVISIBLE);
+        */
+
+        mGLNativeView = (GLNativeView) findViewById(R.id.glnativeview);
+        mGLNativeView.init(mAssetManager);
         /*******************/
 
     }
@@ -41,13 +52,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mGLView.onResume();
+        if(mGLView != null)
+            mGLView.onResume();
+        if(mGLNativeView != null)
+            mGLNativeView.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mGLView.onPause();
+        if(mGLView != null)
+            mGLView.onPause();
+        if(mGLNativeView != null)
+            mGLNativeView.onPause();
     }
 
     /**
